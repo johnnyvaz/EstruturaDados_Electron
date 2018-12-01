@@ -11,7 +11,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 	<title>Estrutura de Dados</title>
 </head>
-</head>
 <body>
 	<div class="navbar-fixed">
 		<nav>
@@ -24,112 +23,141 @@
 	<br>
 	
 	
-	<div class="col-sm-4 infos">
-		<p>Lista Encadeada</p>
-		<div class="container inicio-ex3">
-			<div class="row">
-				<button class="col-sm-12 inicio btn butt"> Iniciar Exercício</button>
-			</div>
-			<div class="col-sm-12 action-list" >
-				<p> Escolha uma ação</p>
-				<button class="col-sm-12 inicio btn butt-insert_list"> Inserir opcao</button>
-				<button class="col-sm-12 inicio btn butt-return_elements_list"> Retornar Qtde.</button>
-				<button class="col-sm-12 inicio btn butt-search_list"> Buscar opcao</button>
-				<button class="col-sm-12 inicio btn butt-list_all_elements"> Mostrar todos</button>
-				<button class="col-sm-12 inicio btn butt-remove_element_list"> Remover opcao</button>
-				<button class="col-sm-12 inicio btn butt-return_first_element"> Retornar Primeira opcao</button>
-			</div>
-			<div class="col-sm-12 insert-list" >
-				<label>Insira um opcao <input type="text" id="input_value_insert_list" value=""></label>
-				<button class="col-sm-12 inicio btn action_insert-list"> Inserir</button>
-				<button class="col-sm-12 inicio btn back-hash"> Voltar</button>
-			</div>
-			<div class="col-sm-12 search-list" >
-				<label>Insira um opcao <input type="text" id="input_value_search_list" value=""></label>
-				<button class="col-sm-12 inicio btn action_insert-list"> Buscar</button>
-				<button class="col-sm-12 inicio btn back-hash"> Voltar</button>
-			</div>
-			<div class="col-sm-12 remove-list" >
-				<label>Insira uma posição <input type="text" id="input_value_remove_list" value=""></label>
-				<button class="col-sm-12 inicio btn action_remove-list"> Remover</button>
-				<button class="col-sm-12 inicio btn back-hash"> Voltar</button>
-			</div>
-		</div>
-	</div>
-</div>
-</div>
-
+	
 <script type="text/javascript">
-	var array_list = [];
 	
-	$('.inicio-ex3').click(function(){
-		
-		$('.action-list').show();
-		$('.butt-insert_list').click(function(){
-			$('.insert-list').show();
-			
-			$('.action_insert-list').click(function(){
-				if ($('#input_value_insert_list').val() != '') {
-					array_list.push($('#input_value_insert_list').val());
-				}
-			})
-		});
-		
-		$('.butt-return_elements_list').click(function(){
-			if (array_list.length > 0) {
-				alert(array_list.length);
-				return false;
-			}
-		});
-		
-		$('.butt-search_list').click(function(){
-			$('.search-list').show();
-			$('.action_insert-list').click(function(){
-				console.log(array_list.indexOf($('#input_value_search_list').val()));
-				if ($('#input_value_search_list').length > 0 && array_list.indexOf($('#input_value_search_list').val()) != -1) {
-					alert('opcao no vetor!');
-					return false;
-				} else {
-					alert('opcao inexistente!');
-					return false;
-				}
-			});
-		});
-		
-		$('.butt-list_all_elements').click(function(){
-			if(array_list.length > 0){
-				alert(array_list);
-				return false;
-			} else {
-				alert('Vetor vazio!');
-				return false;
-			}
-		});
-		
-		$('.butt-remove_element_list').click(function(){
-			$('.remove-list').show();
-			
-			$('.action_remove-list').click(function(){
-				if ($('#input_value_remove_list').val() != '' && array_list[$('#input_value_remove_list').val()] != '') {
-					array_list.splice($('#input_value_remove_list').val(), 1);
-					alert('Posição removida!');
-					return false;
-				}
-			});
-		});
-		
-		$('.butt-return_first_element').click(function(){
-			if (array_list[0].length > 0) {
-				alert('A primeira posição é: ' + array_list[0]);
-				return false;
-			} else {
-				alert('Primeira posição vazia: -1');
-				return false;
-			}
-		});
-	});
-	
-	
+	function ListaSimples() {
+    var quantidade = 0;
+    var primeiro = null;
+
+    //Retorna a quantidade de itens na lista
+    this.GetQuantidade = function() {
+        return quantidade;
+    }
+
+    //Exibe todos os itens da lista no formato de vetor javascript
+    this.ExibirTodos = function() {
+        if (primeiro === null) {
+            return null;
+        } else {
+            var arr = new Array();
+            var atual = primeiro;
+            for (var i = 0; i < quantidade; i++) {
+                arr[i] = atual.dado;
+                atual = atual.prox;
+            }
+            return arr;
+        }
+    }
+    
+    //Exibe o item que está localizado no indice pedido
+    this.MostrarNoIndice = function(indice) {
+        //Cofere se o indice existe na lista
+        if (indice > -1 && indice < quantidade) {
+            var atual = primeiro;
+            var i = 0;
+
+            while (i++ < indice) {
+                atual = atual.prox;
+            }
+
+            return atual.dado;
+        } else {
+            console.log("Indice inválido");
+        }
+    }
+    
+    //Adiciona na frente da lista
+    this.AdicionarPrimeiro = function(dado) {
+        var node = {
+            dado : dado,
+            prox : primeiro
+        };
+
+        primeiro = node;
+        quantidade++;
+    }
+    
+    //Adiciona um item em uma posição especifica da lista
+    this.Adicionar = function(dado, indice) {
+        if (indice === 0) {
+            this.AdicionarPrimeiro(dado);
+        }
+        //Cofere se o indice existe na lista
+        else if (indice > -1 && indice < quantidade) {
+
+            var node = {
+                dado : dado,
+                prox : null
+            };
+
+            var anterior;
+            var atual = primeiro;
+            var i = 0;
+
+            //percorre a lista para adicionar no local correto
+            while (i++ < indice) {
+                anterior = atual;
+                atual = atual.prox;
+            }
+
+            anterior.prox = node;
+            node.prox = atual;
+
+            quantidade++;
+        } else {
+            console.log("Indice inválido");
+        }
+    }
+    
+    //Remove o primeiro item da lista
+    this.RemverPrimeiro = function() {
+        if (primeiro === null) {
+            return null;
+        } else {
+            var sair = primeiro;
+            primeiro = primeiro.prox;
+
+            if (quantidade > 0) {
+                quantidade--;
+            }
+
+            return sair.dado;
+        }
+    }
+    
+    //Remove o item na posição especifica do Indice
+    this.RemoverNoIndice = function(indice) {
+
+        if (indice === 0) {
+            return this.RemverPrimeiro(indice);
+        }
+        //Cofere se o indice existe na lista
+        else if (indice > -1 && indice < quantidade) {
+
+            var atual = primeiro;
+            var anterior;
+            var i = 0;
+
+            while (i++ < indice) {
+                anterior = atual;
+                atual = atual.prox;
+            }
+
+            //"pula" o item para remove-lo
+            anterior.prox = atual.prox;
+
+            quantidade--;
+        } else {
+            console.log("Indice inválido");
+        }
+
+        //Retorna o valor do item removido
+        return atual.dado;
+    }
+}
+
+
 </script>
 
 </body>

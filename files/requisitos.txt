@@ -7,10 +7,10 @@ como um caractere) e possua as funções para inserir e buscar chaves nesta tabe
 
 
 3. Fazer um programa com as seguintes funções de lista encadeada:
-a) Inserir um elemento no final da lista.
-b) Retornar a quantidade de elementos da lista.
-c) Mostrar todos os elementos da lista.
-d) Remover um elemento de uma posição específica da lista.
-e) Retornar a posição do elemento na lista. Se o elemento não existir, retorne -1.
+a) Inserir um elemento no final da lista. - AddRange
+b) Retornar a quantidade de elementos da lista. - this.Count
+c) Mostrar todos os elementos da lista. - this.ForEach
+d) Remover um elemento de uma posição específica da lista. - this.RemoveAt
+e) Retornar a posição do elemento na lista. Se o elemento não existir, retorne -1. - this.Find + -1
 
 
