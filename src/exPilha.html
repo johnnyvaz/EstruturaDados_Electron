@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="refresh" content="5;url=expilha.html">
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link type="text/css" rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    </head>
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper">
+      <a href="src/index.html" class="brand-logo">Pilha</a>
+    </div>
+  </nav>
+</div>
+
+<script>
+ var pilha = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    document.writeln(" pilha completa = " + pilha);
+    
+	function limpar() {
+      while (pilha.length > 0) {
+        pilha.pop();
+      }
+    }
+    limpar();
+
+    document.writeln("<br /> Função limpar = " + pilha);
+
+        document.writeln("<br /> <hr> ");
+    
+    var pilha2 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+    //remover do final :
+    function final(){
+      x = pilha2.pop();
+      document.writeln("Função remover do final(POP)= " + pilha2);
+    }
+    final();
+    final();
+
+document.writeln("<br><hr>")
+var pilha3 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+ //adicionar no final :
+ function afinal(n){
+      x = pilha3.push(n);
+      document.writeln("<br>Adicionando no final(PUSH)= " + pilha3);
+    }
+    afinal(15);
+    afinal(20);
+
+document.writeln("<br><hr>")
+
+
+    // pop() = retira o último elemento
+    // push() = adiciona um elemento no final 
+    // shift() = retira o primeiro elemento do quadro
+    // unshift() = adiciona um ou mais elementos no início de um array e retorna o número de elementos (propriedade length) atualizado.
+document.writeln("<br><hr>");
+
+document.writeln("<br>teste para prova<hr>");
+var pilha4 = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+
+function pilha4() {
+    var pilha = [];
+        for ( let i = 0 ; i = fila.length; i++){
+		   var result = pilha.push(fila.pop(i));
+		}
+		return result;
+    }
+    
+	document.write(pilha4);
+  </script>
+
+    <body>
+      <!--JavaScript at end of body for optimized loading-->
+      <script type="text/javascript" src="node_modules/materialize-css/dist/js/materialize.min.js"></script>
+    </body>
+  </html>
+        

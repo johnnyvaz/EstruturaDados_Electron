@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt_br">
+<head>
+	<meta charset="UTF-8">
+	<!--Import Google Icon Font-->
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<!--Import materialize.css-->
+	<link type="text/css" rel="stylesheet" href="../node_modules/materialize-css/dist/css/materialize.min.css"  media="screen,projection"/>
+	
+	<!--Let browser know website is optimized for mobile-->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Estrutura de Dados</title>
+</head>
+<body>
+	<div class="navbar-fixed">
+		<nav>
+			<div class="nav-wrapper">
+				<a href="index.html" class="brand-logo">Pilha</a>
+			</div>
+		</nav>
+	</div>
+	<hr>
+	<br>
+	
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-4 infos">
+				<p>hash Linear</p>
+				<div class="container inicio-ex2">
+					<div class="row">
+						<button class="col-sm-12 inicio btn   butt"> Iniciar Exercício</button>
+					</div>
+					<div class="col-sm-12 action-hash" >
+						<p> Escolha uma ação</p>
+						<button class="col-sm-6 inicio btn   butt-insert_hash"> Inserir opcao</button>
+						<button class="col-sm-6 inicio btn butt-search_hash"> Buscar opcao</button>
+					</div>
+					<div class="col-sm-12 insert-hash" >
+						<label>Insira uma letra <input type="text" id="input_value_insert_hash" value=""></label>
+						<button class="col-sm-6 inicio btn   action_insert-hash"> Inserir</button>
+						<button class="col-sm-6 inicio btn back-hash"> Voltar</button>
+					</div>
+					<div class="col-sm-12 search-hash" >
+						<label>Insira uma letra <input type="text" id="input_value_search_hash" value=""></label>
+						<button class="col-sm-6 inicio btn action_search-hash"> Buscar</button>
+						<button class="col-sm-6 inicio btn back-hash"> Voltar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+
+$('.inicio-ex2').click(function(){
+			
+			var array_length = 8;
+			var array = new Array(array_length);
+			
+			//ACTIONS
+			$('.action-hash').show();
+			
+			$('.butt-insert_hash').click(function(){
+				// $('.action-hash').fadeOut();
+				$('.insert-hash').show();
+			});
+			
+			$('.butt-search_hash').click(function(){
+				// $('.action-hash').fadeOut();
+				$('.search-hash').show();
+			});
+			
+			$('.back-hash').click(function(){
+				//ACTIONS
+				
+				//INSERT
+				$('.action_insert-hash').click(function(){
+					if($('#input_value_insert_hash').val() != ''){
+						var letter = $('#input_value_insert_hash').val();
+						var letter_aux = 0;
+						
+						letter_aux = letter.charCodeAt(0);
+						var position = Math.round(mod(letter_aux, array.length));
+						
+						if(position > array_length){
+							verifyPosition(position, array_length, array); 
+						} else {
+							array.splice(position, 0, letter_aux);
+							// array[position].push(letter_aux);
+						}
+					} else {
+						alert('Insira uma letra!');
+					}
+				});	
+				//INSERT
+				
+				//busca
+				$('.action_search-hash').click(function(){
+					if($('#input_value_search_hash').val() != ''){
+						
+						var letter = $('#input_value_insert_hash').val();
+						var letter_aux = 0;
+						var position = Math.round(mod(letter_aux, array.length));
+						
+						if (array[position] == null || array[position] == '') {
+							alert('O opcao desta posição é: ' + array[position]);
+						} else {
+							alert('Posição vazia!');
+						}
+						
+						letter_aux = letter.charCodeAt(0);
+						var position = Math.round(mod(letter_aux, array.length));
+						
+					} else {
+						alert('Insira uma letra!');
+					}
+				});
+
+			});
+
+		</script>
+		
+		
+		
+		
+	</body>
+	</html>
