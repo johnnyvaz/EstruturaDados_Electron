@@ -4,7 +4,9 @@
   "description": "Sistema para Estudo de Estrutura de Dados",
   "main": "js/main.js",
   "scripts": {
-    "start": "electron ."
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder",
+    "postinstall": "electron-builder install-app-deps"
   },
   "repository": "https://github.com/electron/electron-quick-start",
   "keywords": [
@@ -17,9 +19,9 @@
   "author": "JohnnyVaz",
   "license": "CC0-1.0",
   "devDependencies": {
-    "electron": "^2.0.0",
-    "electron-winstaller": "^2.6.4",
-    "electron-builder": "^20.38.2"
+    "electron": "^3.0.10",
+    "electron-builder": "^20.38.2",
+    "electron-winstaller": "^2.6.4"
   },
   "dependencies": {
     "materialize-css": "^1.0.0-rc.2",
@@ -30,10 +32,5 @@
     "mac": {
       "category": "Estrutura.Dados.Electron"
     }
-  },
-  "scripts": {
-    "pack": "electron-builder --dir",
-    "dist": "electron-builder",
-    "postinstall": "electron-builder install-app-deps"
   }
 }
