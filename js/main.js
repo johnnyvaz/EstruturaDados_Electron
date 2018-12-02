@@ -175,7 +175,7 @@ let template = [{
   submenu: [{
     label: 'Ajuda online',
     click: () => {
-      shell.openExternal('https://github.com/johnnyvaz1/EstruturaDadosElectron')
+      shell.openExternal('https://github.com/johnnyvaz1/EstruturaDados_Electron')
     }
   }]
 }]
